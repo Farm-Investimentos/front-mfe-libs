@@ -19,6 +19,8 @@ const helpersFiles = [
 	'notify/notification',
 	'notify/notificationWrapper',
 	'notify/index',
+	'store/gettersBuilder',
+	'store/index',
 ];
 const mixinsFiles = ['gtag', 'routeRole'];
 
