@@ -34,6 +34,12 @@ jobs:
       - name: Build
         run: npm run build 
 
+      - name: Copy files
+        run: cp package.json dist/ && cp .npmrc dist/
+
+      - name: Enter dist/
+        run: cd dist/
+
       - name: Publish to NPM
         run: npm publish --access public 
         env: 
