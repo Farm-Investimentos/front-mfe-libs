@@ -9,7 +9,20 @@ const formattersFiles = [
 	'percentage/index',
 ];
 
-const helpersFiles = ['axiosWrapper/index', 'errorBuilder/index', 'toClipboard/index'];
+const helpersFiles = [
+	'axiosWrapper/index',
+	'errorBuilder/index',
+	'toClipboard/index',
+	'validators/cpfOrCnpj',
+	'validators/email',
+	'validators/index',
+	'notify/notification',
+	'notify/notificationWrapper',
+	'notify/index',
+	'store/gettersBuilder',
+	'store/index',
+	'fileSaver/index'
+];
 const mixinsFiles = ['gtag', 'routeRole'];
 
 let entry = {};

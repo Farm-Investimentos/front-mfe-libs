@@ -1,6 +1,6 @@
 {
   "name": "@farm-investimentos/front-mfe-libs",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "author": "farm investimentos",
   "private": false,
   "scripts": {
@@ -38,5 +38,8 @@
   },
   "publishConfig": {
     "@farm-investimentos:registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "jest-environment-jsdom": "^27.2.5"
   }
 }
