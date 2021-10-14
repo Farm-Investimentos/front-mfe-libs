@@ -1,12 +1,12 @@
 {
   "name": "@farm-investimentos/front-mfe-libs",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "author": "farm investimentos",
   "private": false,
   "scripts": {
     "build": "webpack --mode production",
     "test": "jest",
-    "jsdoc": "jsdoc -r src/helpers/ -d jsdocs-static"
+    "jsdoc": "jsdoc -r src/ -d jsdocs-static"
   },
   "files": [
     "**/*"

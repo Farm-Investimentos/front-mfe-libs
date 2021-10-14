@@ -1,5 +1,5 @@
 import decimals from './decimals';
 
-module.exports = {
+export {
 	decimals,
 };
