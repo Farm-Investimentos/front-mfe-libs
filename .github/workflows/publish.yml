@@ -37,11 +37,12 @@ jobs:
       - name: Copy files
         run: cp package.json dist/ && cp .npmrc dist/
 
-      - name: Enter dist/
-        run: cd dist/
+      #- name: Enter dist/
+      #  run: cd dist/
 
       - name: Publish to NPM
-        run: npm publish --access public 
+        #run: npm publish --access public 
+        run: npm publish dist/ --access public
         env: 
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
