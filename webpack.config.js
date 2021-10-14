@@ -21,6 +21,7 @@ const helpersFiles = [
 	'notify/index',
 	'store/gettersBuilder',
 	'store/index',
+	'fileSaver/index'
 ];
 const mixinsFiles = ['gtag', 'routeRole'];
 
