@@ -1,4 +1,4 @@
-import errorBuilder from './errorBuilder';
+import errorBuilder from './index';
 describe('ErrorBuilder', () => {
 	it('Should return error for timeout/abort', () => {
 		const r = errorBuilder({

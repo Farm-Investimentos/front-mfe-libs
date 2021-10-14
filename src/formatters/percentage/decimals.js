@@ -1,4 +1,4 @@
-const calculateWithDecimals = (value1, value2, decimals = 1) => {
+export default (value1, value2, decimals = 1) => {
 	if (value1 === 0 || value2 === 0) {
 		return 0;
 	}
@@ -10,8 +10,4 @@ const calculateWithDecimals = (value1, value2, decimals = 1) => {
 		return p;
 	}
 	return p.toFixed(decimals);
-};
-
-export default {
-	calculateWithDecimals,
 };
