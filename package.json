@@ -23,20 +23,6 @@
     "jsdoc": "^3.6.7",
     "webpack-cli": "^4.9.0"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
@@ -44,7 +30,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/Farm-Investimentos/front-mfe-components.git"
+    "url": "git://github.com/Farm-Investimentos/front-mfe-libs.git"
   },
   "publishConfig": {
     "@farm-investimentos:registry": "https://registry.npmjs.org"
