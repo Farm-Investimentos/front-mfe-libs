@@ -14,7 +14,7 @@ const mixinsFiles = ['gtag', 'routeRole'];
 
 let entry = {};
 constantsFiles.forEach(file => {
-	entry['helpers' + file] = `./src/consts/${file}.js`;
+	entry['consts/' + file] = `./src/consts/${file}.js`;
 });
 formattersFiles.forEach(file => {
 	entry['formatters/' + file] = `./src/formatters/${file}.js`;
