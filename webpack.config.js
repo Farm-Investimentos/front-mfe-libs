@@ -20,12 +20,13 @@ const helpersFiles = [
 	'notify/index',
 	'store/gettersBuilder',
 	'store/index',
+	'store/userAccess/index',
 	'store/mutationsBuilder',
 	'store/resetListBuilder',
 	'fileSaver/index',
 	'string/capitalize',
 	'string/index',
-	'toClipboard/index'
+	'toClipboard/index',
 ];
 const mixinsFiles = ['gtag', 'routeRole'];
 
@@ -50,17 +51,6 @@ module.exports = {
 		filename: '[name].js',
 		libraryTarget: 'umd',
 	},
-	/*
-	module: {
-		rules: [
-			{
-				test: /\.js?$/,
-				exclude: /(node_modules)/,
-				use: 'babel-loader',
-			},
-		],
-	},
-    */
 	resolve: {
 		extensions: ['.js'],
 	},
