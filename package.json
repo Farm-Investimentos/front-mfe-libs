@@ -38,5 +38,8 @@
   },
   "publishConfig": {
     "@farm-investimentos:registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "jest-environment-jsdom": "^27.2.5"
   }
 }

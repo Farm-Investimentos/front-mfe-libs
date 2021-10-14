@@ -16,6 +16,9 @@ const helpersFiles = [
 	'validators/cpfOrCnpj',
 	'validators/email',
 	'validators/index',
+	'notify/notification',
+	'notify/notificationWrapper',
+	'notify/index',
 ];
 const mixinsFiles = ['gtag', 'routeRole'];
 
