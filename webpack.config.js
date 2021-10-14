@@ -12,7 +12,6 @@ const formattersFiles = [
 const helpersFiles = [
 	'axiosWrapper/index',
 	'errorBuilder/index',
-	'toClipboard/index',
 	'validators/cpfOrCnpj',
 	'validators/email',
 	'validators/index',
@@ -21,7 +20,12 @@ const helpersFiles = [
 	'notify/index',
 	'store/gettersBuilder',
 	'store/index',
-	'fileSaver/index'
+	'store/mutationsBuilder',
+	'store/resetListBuilder',
+	'fileSaver/index',
+	'string/capitalize',
+	'string/index',
+	'toClipboard/index'
 ];
 const mixinsFiles = ['gtag', 'routeRole'];
 
