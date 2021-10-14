@@ -1,20 +1,8 @@
 import RequestStatusEnum from '../../consts/RequestStatusEnum';
 import gettersBuilder from './gettersBuilder';
+import mutationsBuilder from './mutationsBuilder';
+import resetListBuilder from './resetListBuilder';
 
-const capitalize = s => {
-	if (typeof s !== 'string') return '';
-	return s.charAt(0).toUpperCase() + s.slice(1);
-};
-
-const mutationsBuilder = attributes => {
-	const _mutations = {};
-	attributes.forEach(attr => {
-		_mutations['set' + capitalize(attr)] = (state, newValue) => {
-			state[attr] = newValue;
-		};
-	});
-	return _mutations;
-};
 
 const buildStateRequestStatus = keys => {
 	let _state = {};
@@ -48,15 +36,6 @@ const dismissDefaultParserState = (commit, key) => {
 	return true;
 };
 
-const resetListBuilder = _key => {
-	const key = capitalize(_key);
-	return {
-		['setReset' + key]: state => {
-			state[_key] = [];
-			state[_key + 'TotalPages'] = null;
-		},
-	};
-};
 
 const buildBasicState = _keys => {
 	let basicKeysState = {};
