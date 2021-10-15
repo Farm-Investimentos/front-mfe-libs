@@ -12,6 +12,8 @@ const formattersFiles = [
 const helpersFiles = [
 	"axiosWrapper/index",
 	"errorBuilder/index",
+	"file/downloadFileHandler",
+	"file/index",
 	"validators/cpfOrCnpj",
 	"validators/email",
 	"validators/index",
@@ -27,9 +29,9 @@ const helpersFiles = [
 	"fileSaver/index",
 	"string/capitalize",
 	"string/index",
-	"toClipboard/index",
+	"toClipboard/index"
 ];
-const mixinsFiles = ["gtag", "routeRole"];
+const mixinsFiles = ["gtag", "routeRole", "exportHandler"];
 
 let entry = {};
 constantsFiles.forEach((file) => {
