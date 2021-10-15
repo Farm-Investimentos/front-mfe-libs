@@ -1,7 +1,11 @@
 /**
- * @module
  * FileSaver used to generate file from blob
- */
+ * and download it
+ * @module
+ * @param {data} - the data (blob)
+ * @param {type} - content-type
+ * @param {name} - name from the generated file
+*/
 
 export const fileSaver = (windowWrapper) => (data, type, name) => {
 	const blob = new Blob([data], { type });

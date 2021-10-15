@@ -1,6 +1,7 @@
 /**
  * Wrapper for the browser localStorage, leveraing its features
  * and enhancing them (such as JSON parse/stringify for stored values)
+ * @module
  * @param {storage} - a storage object that implements same interface from local storage
  * @returns {Object} - an storage object
  */
