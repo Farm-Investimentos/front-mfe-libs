@@ -4,22 +4,24 @@ import mutationsBuilder from './mutationsBuilder';
 import resetListBuilder from './resetListBuilder';
 
 const buildStateRequestStatus = (keys) => {
-	const _state = {};
+	const state = {};
 	keys.forEach((item) => {
-		_state[item] = RequestStatusEnum.IDLE;
+		state[item] = RequestStatusEnum.IDLE;
 	});
-	return _state;
+	return state;
 };
 
-const fetchDefaultParser = (commit, _data, parser, key) => {
-	const result = parser ? parser(_data) : _data;
+const fetchDefaultParser = (commit, data, parser, key) => {
+	const result = parser ? parser(data) : data;
 	commit(`set${key}`, result);
 	commit(`set${key}RequestStatus`, RequestStatusEnum.SUCCESS);
 	return { result };
 };
 
 const fetchDefaultParserPagination = (commit, data, parser, key) => {
-	const result = parser ? data.data.content.map((item) => parser(item)) : data.data.content;
+	const result = parser
+		? data.data.content.map((item) => parser(item))
+		: data.data.content;
 	const { totalPages } = data.data;
 
 	commit(`set${key}`, result);
@@ -35,18 +37,21 @@ const dismissDefaultParserState = (commit, key) => {
 	return true;
 };
 
-const buildBasicState = (_keys) => {
+const buildBasicState = (keys) => {
 	const basicKeysState = {};
-	_keys.forEach((key) => (basicKeysState[key] = key.endsWith('List') ? [] : null));
+	keys.forEach(
+		(key) => (basicKeysState[key] = key.endsWith('List') ? [] : null),
+	);
 	return basicKeysState;
 };
 
-const getFirstItemFromResponseArray = (_data) => (_data.data.content.length > 0 ? _data.data.content[0] : null);
+const getFirstItemFromResponseArray =
+	(_data) => (_data.data.content.length > 0 ? _data.data.content[0] : null);
 
-const buildStateListResult = (_keys) => {
+const buildStateListResult = (keys) => {
 	const keysState = {};
-	_keys.forEach(
-		(_key) => (keysState[_key] = {
+	keys.forEach(
+		(key) => (keysState[key] = {
 			results: [],
 			totalPages: null,
 			total: null,

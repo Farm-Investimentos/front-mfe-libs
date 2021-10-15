@@ -9,11 +9,11 @@ import { capitalize } from '../string';
  * @return {Array} - array of mutations (functions)
  */
 export default (attributes) => {
-	const _mutations = {};
+	const mutations = {};
 	attributes.forEach((attr) => {
-		_mutations[`set${capitalize(attr)}`] = (state, newValue) => {
+		mutations[`set${capitalize(attr)}`] = (state, newValue) => {
 			state[attr] = newValue;
 		};
 	});
-	return _mutations;
+	return mutations;
 };
