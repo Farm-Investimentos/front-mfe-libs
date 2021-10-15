@@ -6,8 +6,8 @@
  * @return {Object} error parsed and ready to be used in the views/components
  */
 
-export default error => {
-	let err = {
+export default (error) => {
+	const err = {
 		type: 'ERROR',
 	};
 	if (error.code === 'ECONNABORTED') {
@@ -19,7 +19,7 @@ export default error => {
 		err.httpStatus = error.response.status;
 
 		if (error.response.data) {
-			const data = error.response.data;
+			const { data } = error.response;
 			if (data && data.data) {
 				err.message = data.data;
 			}
@@ -31,7 +31,7 @@ export default error => {
 			}
 			if (data.errors && data.errors.length > 1) {
 				err.message = data.errors
-					.map(item => {
+					.map((item) => {
 						if (!item) return 'Erro inesperado';
 
 						if (item.defaultMessage) return item.defaultMessage;

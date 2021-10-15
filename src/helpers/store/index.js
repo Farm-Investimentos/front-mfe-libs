@@ -3,58 +3,59 @@ import gettersBuilder from './gettersBuilder';
 import mutationsBuilder from './mutationsBuilder';
 import resetListBuilder from './resetListBuilder';
 
-
-const buildStateRequestStatus = keys => {
-	let _state = {};
-	keys.forEach(item => {
-		_state[item] = RequestStatusEnum.IDLE;
+const buildStateRequestStatus = (keys) => {
+	const state = {};
+	keys.forEach((item) => {
+		state[item] = RequestStatusEnum.IDLE;
 	});
-	return _state;
+	return state;
 };
 
-const fetchDefaultParser = (commit, _data, parser, key) => {
-	const result = parser ? parser(_data) : _data;
-	commit('set' + key, result);
-	commit('set' + key + 'RequestStatus', RequestStatusEnum.SUCCESS);
+const fetchDefaultParser = (commit, data, parser, key) => {
+	const result = parser ? parser(data) : data;
+	commit(`set${key}`, result);
+	commit(`set${key}RequestStatus`, RequestStatusEnum.SUCCESS);
 	return { result };
 };
 
 const fetchDefaultParserPagination = (commit, data, parser, key) => {
-	const result = parser ? data.data.content.map(item => parser(item)) : data.data.content;
-	const totalPages = data.data.totalPages;
+	const result = parser
+		? data.data.content.map((item) => parser(item))
+		: data.data.content;
+	const { totalPages } = data.data;
 
-	commit('set' + key, result);
-	commit('set' + key + 'TotalPages', totalPages);
-	commit('set' + key + 'RequestStatus', RequestStatusEnum.SUCCESS);
+	commit(`set${key}`, result);
+	commit(`set${key}TotalPages`, totalPages);
+	commit(`set${key}RequestStatus`, RequestStatusEnum.SUCCESS);
 	return { result, totalPages };
 };
 
 const dismissDefaultParserState = (commit, key) => {
-	commit('set' + key, []);
-	commit('set' + key + 'TotalPages', null);
-	commit('set' + key + 'RequestStatus', RequestStatusEnum.IDLE);
+	commit(`set${key}`, []);
+	commit(`set${key}TotalPages`, null);
+	commit(`set${key}RequestStatus`, RequestStatusEnum.IDLE);
 	return true;
 };
 
-
-const buildBasicState = _keys => {
-	let basicKeysState = {};
-	_keys.forEach(key => (basicKeysState[key] = key.endsWith('List') ? [] : null));
+const buildBasicState = (keys) => {
+	const basicKeysState = {};
+	keys.forEach(
+		(key) => (basicKeysState[key] = key.endsWith('List') ? [] : null),
+	);
 	return basicKeysState;
 };
 
-const getFirstItemFromResponseArray = _data =>
-	_data.data.content.length > 0 ? _data.data.content[0] : null;
+const getFirstItemFromResponseArray =
+	(_data) => (_data.data.content.length > 0 ? _data.data.content[0] : null);
 
-const buildStateListResult = _keys => {
-	let keysState = {};
-	_keys.forEach(
-		_key =>
-			(keysState[_key] = {
-				results: [],
-				totalPages: null,
-				total: null,
-			})
+const buildStateListResult = (keys) => {
+	const keysState = {};
+	keys.forEach(
+		(key) => (keysState[key] = {
+			results: [],
+			totalPages: null,
+			total: null,
+		}),
 	);
 	return keysState;
 };

@@ -3,7 +3,7 @@ export default (value1, value2, decimals = 1) => {
 		return 0;
 	}
 	const p = (value1 / value2) * 100;
-	if (isNaN(p)) {
+	if (Number.isNaN(p)) {
 		return '0';
 	}
 	if (Math.round(p) === p) {

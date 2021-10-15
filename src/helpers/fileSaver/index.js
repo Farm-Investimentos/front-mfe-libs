@@ -1,18 +1,19 @@
 /**
+ * FileSaver used to generate file from blob
+ * and download it
  * @module
- * FileSaver used to generate file from blob 
- */
+ * @param {data} - the data (blob)
+ * @param {type} - content-type
+ * @param {name} - name from the generated file
+*/
 
-export const _fileSaver = _window => {
-    return (data, type, name) => {
-        let blob = new Blob([data], { type });
-        let link = _window.document.createElement('a');
-        link.href = _window.URL.createObjectURL ? _window.URL.createObjectURL(blob) : null;
-        link.download = name;
-        link.click();
-        return link;
-    };
+export const fileSaver = (windowWrapper) => (data, type, name) => {
+	const blob = new Blob([data], { type });
+	const link = windowWrapper.document.createElement('a');
+	link.href = windowWrapper.URL.createObjectURL ? windowWrapper.URL.createObjectURL(blob) : null;
+	link.download = name;
+	link.click();
+	return link;
 };
 
-export default _fileSaver(window);
-
+export default fileSaver(window);
