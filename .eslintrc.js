@@ -15,6 +15,7 @@ module.exports = {
     "rules":{
         "indent": [2, "tab"],
         "no-tabs": 0,
-        "consistent-return": "off"
+        "consistent-return": "off",
+        "operator-linebreak": "off"
     }
 };

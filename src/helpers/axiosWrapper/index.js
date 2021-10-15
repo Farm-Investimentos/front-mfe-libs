@@ -4,7 +4,8 @@
  * And returns an axios instace ready to be used in the microfrontends
  * @module
  * @param {httpClient} - http client object (axios)
- * @param {notification} - notification function called inside interceptors to add communication between microfrontends
+ * @param {notification} - notification function called inside interceptors
+ * to add communication between microfrontends
  * @param {baseURL} - the default base url used in the requests
  * @return {Object} axios client ready for use
  */
