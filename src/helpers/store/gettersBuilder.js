@@ -1,9 +1,7 @@
-export default attributes => {
+export default (attributes) => {
 	const _getters = {};
-	attributes.forEach(attr => {
-		_getters[attr] = state => {
-			return state[attr];
-		};
+	attributes.forEach((attr) => {
+		_getters[attr] = (state) => state[attr];
 	});
 	return _getters;
 };

@@ -21,9 +21,9 @@ export default (_Vue, mapGetters, mapActions, moduleName) => {
 			}),
 			checkAccess() {
 				const rolesList = this.currentUserRoles;
-				let roleKey = this.$route.meta.roleKey;
+				let { roleKey } = this.$route.meta;
 
-				const rolesPath = roleKey.split('.').map(item => {
+				const rolesPath = roleKey.split('.').map((item) => {
 					if (item.indexOf(':') === 0) {
 						return this.$route.params[item.split(':')[1]];
 					}
@@ -33,19 +33,21 @@ export default (_Vue, mapGetters, mapActions, moduleName) => {
 
 				if (!roleKey || !rolesList) {
 					this.updateCurrentRouteRole('WRITE');
-					return (this.userHasAccess = true);
+					this.userHasAccess = true;
+					return;
 				}
 				const routeRole = rolesList[roleKey];
 
 				if (routeRole && routeRole > 0) {
 					this.updateCurrentRouteRole(routeRole === 2 ? 'WRITE' : 'READ');
-					return (this.userHasAccess = true);
+					this.userHasAccess = true;
+					return;
 				}
 				this.updateCurrentRouteRole(0);
 				this.userHasAccess = false;
 			},
 			listenToUserRolesChange() {
-				window.addEventListener('CURRENT_USER_ROLES', data => {
+				window.addEventListener('CURRENT_USER_ROLES', (data) => {
 					this.updateCurrentUserRoles(data.detail.message);
 					this.checkAccess();
 				});
