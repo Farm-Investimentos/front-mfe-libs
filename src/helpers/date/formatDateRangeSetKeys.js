@@ -13,9 +13,9 @@ export default (range, field, obj, sufixes = ['', '_fim']) => {
 
 		const reverse = new Date(range[0]) > new Date(range[1]);
 		if (reverse) {
-			const _proxy = obj.filters[field + sufixes[1]];
+			const proxy = obj.filters[field + sufixes[1]];
 			obj.filters[field + sufixes[1]] = obj.filters[field + sufixes[0]];
-			obj.filters[field + sufixes[0]] = _proxy;
+			obj.filters[field + sufixes[0]] = proxy;
 		}
 		obj[field + 'Range'] =
 			defaultDateFormat(obj.filters[field + sufixes[0]]) +
