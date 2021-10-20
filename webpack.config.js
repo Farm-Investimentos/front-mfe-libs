@@ -11,6 +11,11 @@ const formattersFiles = [
 
 const helpersFiles = [
 	"axiosWrapper/index",
+	"date/index",
+	"date/formatDateRangeSetKeys",
+	"date/defaultDateFormat",
+	"date/unFormatDate",
+	"date/dateStringToISO",
 	"errorBuilder/index",
 	"file/downloadFileHandler",
 	"file/index",
