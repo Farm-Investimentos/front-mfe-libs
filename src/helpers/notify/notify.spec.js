@@ -2,10 +2,10 @@
  * @jest-environment jsdom
  */
 
-import { notificationWrapper } from './';
+import { notificationWrapper } from '.';
 
 describe('notificationWrapper', () => {
-	it('Should return SUCCESS', () => {
-		expect(notificationWrapper('SUCCESS', 'a', 'b')).toBeTruthy();
-	});
+  it('Should return SUCCESS', () => {
+    expect(notificationWrapper('SUCCESS', 'a', 'b')).toBeTruthy();
+  });
 });
