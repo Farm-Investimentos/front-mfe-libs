@@ -39,8 +39,8 @@ const buildBasicState = (keys) => {
 	return basicKeysState;
 };
 
-const getFirstItemFromResponseArray = (_data) =>
-	_data.data.content.length > 0 ? _data.data.content[0] : null;
+const getFirstItemFromResponseArray = (data) =>
+	data.data.content.length > 0 ? data.data.content[0] : null;
 
 const buildStateListResult = (keys) => {
 	const keysState = {};
