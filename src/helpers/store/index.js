@@ -2,6 +2,7 @@ import RequestStatusEnum from '../../consts/RequestStatusEnum';
 import gettersBuilder from './gettersBuilder';
 import mutationsBuilder from './mutationsBuilder';
 import resetListBuilder from './resetListBuilder';
+import fetchDefaultParser from './fetchDefaultParser';
 
 const buildStateRequestStatus = (keys) => {
 	const state = {};
@@ -9,13 +10,6 @@ const buildStateRequestStatus = (keys) => {
 		state[item] = RequestStatusEnum.IDLE;
 	});
 	return state;
-};
-
-const fetchDefaultParser = (commit, data, parser, key) => {
-	const result = parser ? parser(data) : data;
-	commit(`set${key}`, result);
-	commit(`set${key}RequestStatus`, RequestStatusEnum.SUCCESS);
-	return { result };
 };
 
 const fetchDefaultParserPagination = (commit, data, parser, key) => {
@@ -45,17 +39,20 @@ const buildBasicState = (keys) => {
 	return basicKeysState;
 };
 
-const getFirstItemFromResponseArray =
-	(_data) => (_data.data.content.length > 0 ? _data.data.content[0] : null);
+const getFirstItemFromResponseArray = (data) => {
+	if (data.data.content.length > 0) return data.data.content[0];
+	return null;
+};
 
 const buildStateListResult = (keys) => {
 	const keysState = {};
 	keys.forEach(
-		(key) => (keysState[key] = {
-			results: [],
-			totalPages: null,
-			total: null,
-		}),
+		(key) =>
+			(keysState[key] = {
+				results: [],
+				totalPages: null,
+				total: null,
+			}),
 	);
 	return keysState;
 };
