@@ -34,13 +34,15 @@ const dismissDefaultParserState = (commit, key) => {
 const buildBasicState = (keys) => {
 	const basicKeysState = {};
 	keys.forEach(
-		(key) => (basicKeysState[key] = key.endsWith('List') ? [] : null)
+		(key) => (basicKeysState[key] = key.endsWith('List') ? [] : null),
 	);
 	return basicKeysState;
 };
 
-const getFirstItemFromResponseArray = (data) =>
-	data.data.content.length > 0 ? data.data.content[0] : null;
+const getFirstItemFromResponseArray = (data) => {
+	if (data.data.content.length > 0) return data.data.content[0];
+	return null;
+};
 
 const buildStateListResult = (keys) => {
 	const keysState = {};
@@ -50,7 +52,7 @@ const buildStateListResult = (keys) => {
 				results: [],
 				totalPages: null,
 				total: null,
-			})
+			}),
 	);
 	return keysState;
 };

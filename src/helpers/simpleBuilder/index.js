@@ -1,2 +1,11 @@
-export default (defaultKeys) => (rawData) => Object.fromEntries(
-	Object.keys(defaultKeys).map((key) => [[defaultKeys[key]], rawData[key]]));
+/**
+ * Function that receives a list of keys, hoist it, and returns a function that is used
+ * to create an object with key/pair values based on the hoisted list
+ */
+export default (defaultKeys) => (rawData) =>
+	Object.fromEntries(
+		Object.keys(defaultKeys).map((key) => [
+			[defaultKeys[key]],
+			rawData[key],
+		]),
+	);
