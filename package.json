@@ -42,5 +42,8 @@
   },
   "publishConfig": {
     "@farm-investimentos:registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "eslint-plugin-import": "^2.25.2"
   }
 }
