@@ -12,4 +12,5 @@ export default (type, message) => {
 		},
 	});
 	window.dispatchEvent(customEvent);
+	return customEvent;
 };
