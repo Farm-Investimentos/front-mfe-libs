@@ -1,3 +1,6 @@
+[![codecov](https://codecov.io/gh/Farm-Investimentos/front-mfe-libs/branch/develop/graph/badge.svg?token=F4Z65U00U9)](https://codecov.io/gh/Farm-Investimentos/front-mfe-libs)
+
+
 # front-mfe-libs
 
 ## Project setup

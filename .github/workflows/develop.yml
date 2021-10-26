@@ -1,9 +1,9 @@
-name: Build & Publish NPM Package
+name: Develop
 
 on:
   push:
     branches:
-      - main
+      - develop
 
 env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -35,15 +35,11 @@ jobs:
         run: npm run lint
 
       - name: Test with coverage
-        run: npm run test
+        run: npm run test:coverage
 
-      - name: Build
-        run: npm run build
-
-      - name: Copy files
-        run: cp package.json dist/ && cp .npmrc dist/
-
-      - name: Publish to NPM
-        run: npm publish dist/ --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          name: codecov-front-mfe-libs
+          fail_ci_if_error: true
+          path_to_write_report: ./coverage/codecov_report.txt
