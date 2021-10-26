@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 jsdocs-static
+coverage/
 
 dist/ 
 # local env files
