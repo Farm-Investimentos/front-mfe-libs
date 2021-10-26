@@ -1,5 +1,5 @@
 /**
- * Action used to parse data with a DTO helper function
+ * Action used to parse data from a paginated list with a DTO helper function
  * and mutate the state and a request state, based on
  * a state key
  * @module
@@ -9,8 +9,13 @@
  * @param {key} - the state's key
  */
 export default (commit, data, parser, key) => {
-	const result = parser ? parser(data) : data;
+	const result = parser
+		? data.data.content.map((item) => parser(item))
+		: data.data.content;
+	const { totalPages } = data.data;
+
 	commit(`set${key}`, result);
+	commit(`set${key}TotalPages`, totalPages);
 	commit(`set${key}RequestStatus`, 'SUCCESS');
-	return { result };
+	return { result, totalPages };
 };
