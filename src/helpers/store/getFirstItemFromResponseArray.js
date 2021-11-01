@@ -1,4 +1,5 @@
 /**
+ * Retrieves the first item from an array, iside the default repsonse structure
  * @module
  */
 export default (data) => {
