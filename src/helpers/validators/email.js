@@ -1,8 +1,8 @@
 /**
  * Validades if a string matches an e-mail pattern
  * @module
- * @param {value} - the string to be matched
- * @returns {bool} - true or false
+ * @param {string} value - the string to be matched
+ * @returns {boolean} valid or not
  */
 export default (value) => {
 	if (!value) {

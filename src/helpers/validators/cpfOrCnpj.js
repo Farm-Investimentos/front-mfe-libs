@@ -1,8 +1,8 @@
 /**
  * Validades if a string matches a CPF/CNPJ pattern
  * @module
- * @param {value} - the string to be matched
- * @returns {bool} - true or false
+ * @param {string} value - the string to be matched
+ * @returns {Boolean} valid or not
  */
 export default (value) => {
 	const pattern =
