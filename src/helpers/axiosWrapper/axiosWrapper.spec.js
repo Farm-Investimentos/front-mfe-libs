@@ -1,4 +1,4 @@
-import axiosWrapper from '.';
+import axiosWrapper from './';
 
 describe('axiosWrapper', () => {
 	it('Should return an object', () => {
