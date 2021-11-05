@@ -1,3 +1,3 @@
-import localStorageWrapper from "./localStorageWrapper";
+import localStorageWrapper from './localStorageWrapper';
 
 export default localStorageWrapper;

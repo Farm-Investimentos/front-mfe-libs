@@ -1,3 +1,3 @@
-import axiosWrapper from "./axiosWrapper";
+import axiosWrapper from './axiosWrapper';
 
 export default axiosWrapper;

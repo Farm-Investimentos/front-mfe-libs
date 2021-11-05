@@ -1,3 +1,3 @@
-import simpleBuilder from "./simpleBuilder";
+import simpleBuilder from './simpleBuilder';
 
 export default simpleBuilder;

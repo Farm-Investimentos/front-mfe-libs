@@ -5,7 +5,7 @@
  * @param {storage} - a storage object that implements same interface from local storage
  * @returns {Object} - an storage object
  */
-export const localStorageWrapper = (storage) => {
+const localStorageWrapper = (storage) => {
 	function getItem(key, defaultValue) {
 		const item = storage.getItem(key) || defaultValue;
 

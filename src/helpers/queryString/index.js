@@ -1,3 +1,3 @@
-import queryString from "./queryString";
+import queryString from './queryString';
 
 export default queryString;

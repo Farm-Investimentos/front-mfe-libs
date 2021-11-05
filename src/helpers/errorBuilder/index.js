@@ -1,3 +1,3 @@
-import errorBuilder from "./errorBuilder";
+import errorBuilder from './errorBuilder';
 
 export default errorBuilder;

@@ -1,3 +1,3 @@
-import fileSaver from "./fileSaver";
+import fileSaver from './fileSaver';
 
 export default fileSaver;

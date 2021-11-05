@@ -1,3 +1,3 @@
-import toClipboard from "./toClipboard";
+import toClipboard from './toClipboard';
 
 export default toClipboard;
