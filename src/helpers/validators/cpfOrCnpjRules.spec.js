@@ -6,7 +6,7 @@ describe('CPF or CNPJ valid', () => {
     });
 
     it('Should validate invalid CNPJ', () => {
-        expect(cpfOrCnpjRules('89864014000169')).toBeFalsy;
+        expect(cpfOrCnpjRules('89864014000169')).toBeFalsy();
     });
 
     it('Should validate CPF', () => {
@@ -14,6 +14,6 @@ describe('CPF or CNPJ valid', () => {
     });
 
     it('Should validate invalid CPF', () => {
-        expect(cpfOrCnpjRules('50706202079')).toBeFalsy;
+        expect(cpfOrCnpjRules('50706202079')).toBeFalsy();
     });
 });
