@@ -5,9 +5,9 @@ import isValidCNPJ from './isValidCNPJ';
 import isValidCPF from './isValidCPF';
 
 export {
-    email,
-    cpfOrCnpj,
-    cpfOrCnpjRules,
-    isValidCNPJ,
-    isValidCPF,
+	email,
+	cpfOrCnpj,
+	cpfOrCnpjRules,
+	isValidCNPJ,
+	isValidCPF,
 };
