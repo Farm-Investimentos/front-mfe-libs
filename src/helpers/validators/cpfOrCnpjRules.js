@@ -5,6 +5,7 @@
  * @returns {boolean} valid or not
  */
 
-import { isValidCPF, isValidCNPJ } from '.';
+import isValidCPF from './isValidCPF';
+import isValidCNPJ from './isValidCNPJ';
 
 export default (value) => (isValidCPF(value) || isValidCNPJ(value));

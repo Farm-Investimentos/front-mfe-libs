@@ -10,18 +10,18 @@ export default (cnpj) => {
 	let v2 = 0;
 	let aux = false;
 
-	for (let i = 1; cnpj.length > i; i++) {
-		if (cnpj[i - 1] != cnpj[i]) {
+	for (let i = 1; cnpj.length > i; i += 1) {
+		if (cnpj[i - 1] !== cnpj[i]) {
 			aux = true;
 		}
 	}
 
-	if (aux == false) {
+	if (aux === false) {
 		return false;
 	}
 
 	for (let i = 0, p1 = 5, p2 = 13;
-		(cnpj.length - 2) > i; i++, p1--, p2--) {
+		(cnpj.length - 2) > i; i += 1, p1 -= 1, p2 -= 1) {
 		if (p1 >= 2) {
 			v1 += cnpj[i] * p1;
 		} else {
@@ -37,12 +37,12 @@ export default (cnpj) => {
 		v1 = (11 - v1);
 	}
 
-	if (v1 != cnpj[12]) {
+	if (v1 !== cnpj[12]) {
 		return false;
 	}
 
 	for (let i = 0, p1 = 6, p2 = 14;
-		(cnpj.length - 1) > i; i++, p1--, p2--) {
+		(cnpj.length - 1) > i; i += 1, p1 -= 1, p2 -= 1) {
 		if (p1 >= 2) {
 			v2 += cnpj[i] * p1;
 		} else {
@@ -58,7 +58,7 @@ export default (cnpj) => {
 		v2 = (11 - v2);
 	}
 
-	if (v2 != cnpj[13]) {
+	if (v2 !== cnpj[13]) {
 		return false;
 	}
 	return true;
