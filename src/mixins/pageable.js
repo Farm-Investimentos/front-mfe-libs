@@ -9,7 +9,7 @@ const pageable = {
 			this.doSearch();
 		},
 		redoSearchFirstPage() {
-			if (this.filters.page != 0) {
+			if (this.filters.page !== 0) {
 				this.filters.page = 0;
 				return;
 			}
