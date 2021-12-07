@@ -1,22 +1,26 @@
+/* eslint no-restricted-syntax: "error" */
+/* eslint no-prototype-builtins: "error" */
+
 export function flatObject(obj) {
-	const flatObject = {};
-	const path = []; // current path
+	const flatObj = {};
+	const path = [];
 
-	function dig(obj) {
-		if (obj !== Object(obj))
-			/*is primitive, end of path*/
-			return (flatObject[path.join('.')] = obj); /*<- value*/
+	function dig(objDig) {
+		if (objDig !== Object(objDig)) {
+			return (flatObj[path.join('.')] = objDig);
+		}
 
-		//no? so this is an object with keys. go deeper on each key down
-		for (let key in obj) {
-			path.push(key);
-			dig(obj[key]);
-			path.pop();
+		for (const key in objDig) {
+			if (Object.prototype.hasOwnProperty.call(objDig, key)) {
+				path.push(key);
+				dig(objDig[key]);
+				path.pop();
+			}
 		}
 	}
 
 	dig(obj);
-	return flatObject;
+	return flatObj;
 }
 
 export default (_vue, client) => {
@@ -36,4 +40,3 @@ export default (_vue, client) => {
 		},
 	});
 };
-
