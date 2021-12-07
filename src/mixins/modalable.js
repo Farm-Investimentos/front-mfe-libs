@@ -1,4 +1,4 @@
-const importModal = {
+const modalableMixin = {
 	props: {
 		value: {
 			required: true,
@@ -21,4 +21,4 @@ const importModal = {
 	},
 };
 
-export default importModal;
+export default modalableMixin;
