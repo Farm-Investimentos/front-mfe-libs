@@ -6,4 +6,8 @@ export default {
 	updateCurrentRouteRole({ commit }, role) {
 		commit('setCurrentRouteRole', role);
 	},
+
+	updateInternalUser({ commit }, status) {
+		commit('setInternalUser', status);
+	},
 };
