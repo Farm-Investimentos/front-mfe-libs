@@ -9,6 +9,7 @@ export default (_Vue, mapGetters, mapActions, moduleName) => {
 			...mapGetters(moduleName, {
 				currentRouteRole: 'currentRouteRole',
 				currentUserRoles: 'currentUserRoles',
+				internalUser: 'internalUser',
 			}),
 			canWrite() {
 				return this.currentRouteRole === 'WRITE';
@@ -18,6 +19,7 @@ export default (_Vue, mapGetters, mapActions, moduleName) => {
 			...mapActions(moduleName, {
 				updateCurrentUserRoles: 'updateCurrentUserRoles',
 				updateCurrentRouteRole: 'updateCurrentRouteRole',
+				updateInternalUser: 'updateInternalUser',
 			}),
 			checkAccess() {
 				const rolesList = this.currentUserRoles;
@@ -39,7 +41,9 @@ export default (_Vue, mapGetters, mapActions, moduleName) => {
 				const routeRole = rolesList[roleKey];
 
 				if (routeRole && routeRole > 0) {
-					this.updateCurrentRouteRole(routeRole === 2 ? 'WRITE' : 'READ');
+					this.updateCurrentRouteRole(
+						routeRole === 2 ? 'WRITE' : 'READ',
+					);
 					this.userHasAccess = true;
 					return;
 				}
@@ -50,6 +54,9 @@ export default (_Vue, mapGetters, mapActions, moduleName) => {
 				window.addEventListener('CURRENT_USER_ROLES', (data) => {
 					this.updateCurrentUserRoles(data.detail.message);
 					this.checkAccess();
+				});
+				window.addEventListener('CURRENT_USER_INTERNAL', (data) => {
+					this.updateInternalUser(data.detail.message);
 				});
 			},
 		},
