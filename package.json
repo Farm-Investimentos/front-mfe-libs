@@ -1,45 +1,50 @@
 {
-  "name": "@farm-investimentos/front-mfe-libs",
-  "version": "0.0.16",
-  "author": "farm investimentos",
-  "private": false,
-  "scripts": {
-    "build": "webpack --mode production",
-    "test": "jest",
-    "jsdoc": "jsdoc -r src/ -d jsdocs-static",
-    "lint": "eslint ./src"
-  },
-  "files": [
-    "**/*"
-  ],
-  "directories": {
-    "dist": "dist"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "@babel/preset-env": "^7.15.8",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.2.2",
-    "babel-preset-jest": "^27.2.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "jest": "^27.2.5",
-    "jest-environment-jsdom": "^27.2.5",
-    "jsdoc": "^3.6.7",
-    "jsdom": "^16.7.0",
-    "webpack": "^5.58.2",
-    "webpack-cli": "^4.9.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Farm-Investimentos/front-mfe-libs.git"
-  },
-  "publishConfig": {
-    "@farm-investimentos:registry": "https://registry.npmjs.org"
-  }
+    "name": "@farm-investimentos/front-mfe-libs",
+    "version": "0.4.0",
+    "author": "farm investimentos",
+    "private": false,
+    "scripts": {
+        "build": "webpack --mode production",
+        "test": "jest",
+        "test:coverage": "jest --coverage",
+        "jsdoc": "jsdoc -r src/ -d jsdocs-static",
+        "lint": "eslint ./src",
+        "lint:fix": "eslint ./src --fix"
+    },
+    "files": [
+        "**/*"
+    ],
+    "directories": {
+        "dist": "dist"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.14.8",
+        "@babel/preset-env": "^7.15.8",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.2.2",
+        "babel-preset-jest": "^27.2.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb": "^18.2.1",
+        "jest": "^27.2.5",
+        "jest-environment-jsdom": "^27.2.5",
+        "jsdoc": "^3.6.7",
+        "jsdom": "^16.7.0",
+        "webpack": "^5.58.2",
+        "webpack-cli": "^4.9.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Farm-Investimentos/front-mfe-libs.git"
+    },
+    "publishConfig": {
+        "@farm-investimentos:registry": "https://registry.npmjs.org"
+    },
+    "dependencies": {
+        "eslint-plugin-import": "^2.25.2"
+    }
 }

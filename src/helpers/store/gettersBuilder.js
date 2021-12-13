@@ -1,7 +1,7 @@
 /**
  * Create a list of getters (functions) based on a list os state keys
  * @module
- * @param {attributes} - the state keys
+ * @param {Array<string>} attributes - the state keys
  * @returns {getters} - array of functions
  */
 export default (attributes) => {
