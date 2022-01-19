@@ -8,6 +8,11 @@ export default (range, field, obj, sufixes = ['', '_fim']) => {
 	}
 
 	obj.filters[field + sufixes[0]] = range[0];
+
+	if (range.length > 1) {
+		obj.filters[field + sufixes[1]] = range[1];
+	}
+
 	if (range.length > 1 && range[1] !== range[0]) {
 		obj.filters[field + sufixes[1]] = range[1];
 
