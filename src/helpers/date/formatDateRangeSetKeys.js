@@ -23,7 +23,7 @@ export default (range, field, obj, sufixes = ['', '_fim']) => {
 			defaultDateFormat(obj.filters[field + sufixes[1]]);
 	} else {
 		obj[field + 'Range'] = defaultDateFormat(obj.filters[field]);
-		delete obj.filters[field + sufixes[1]];
+		//delete obj.filters[field + sufixes[1]];
 	}
 	return obj[field + 'Range'];
 };
