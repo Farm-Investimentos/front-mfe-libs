@@ -1,11 +1,14 @@
 {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "modules": "commonjs"
-        }
-      ]
-    ],
-    "sourceType": "unambiguous"
-  }
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"modules": "commonjs",
+				"targets": {
+					"node": "current"
+				}
+			}
+		]
+	],
+	"sourceType": "unambiguous"
+}
