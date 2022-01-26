@@ -1,32 +1,33 @@
-const _defaultCacheValidity = 30;
-
-
 import isCacheValid from './isCacheValid';
 
+const defaultCacheValidity = 30;
+
 export default function (client) {
-	const _cacheStorage = {};
+	const cacheStorage = {};
 
 	return {
 		get: async (url, cacheValidity) => {
-			const _date = new Date();
-			const _cachedDataItem = _cacheStorage[url];
+			const date = new Date();
+			const cachedDataItem = cacheStorage[url];
 
-			if (
-				!isCacheValid(
-					_cachedDataItem,
-					_date,
-					cacheValidity ? cacheValidity : _defaultCacheValidity
-				)
-			) {
+			const isValid = isCacheValid(
+				cachedDataItem,
+				date,
+				cacheValidity || defaultCacheValidity,
+			);
+
+			if (!isValid) {
 				try {
 					const response = await client.get(url);
-					_cacheStorage[url] = { response, date: _date };
-					return new Promise(resolve => resolve(response));
+					cacheStorage[url] = { response, date };
+					return new Promise((resolve) => resolve(response));
 				} catch (e) {
 					return new Promise((_, reject) => reject(e));
 				}
 			} else {
-				return new Promise(resolve => resolve(_cachedDataItem.response));
+				return new Promise((resolve) => {
+					resolve(cachedDataItem.response);
+				});
 			}
 		},
 	};
