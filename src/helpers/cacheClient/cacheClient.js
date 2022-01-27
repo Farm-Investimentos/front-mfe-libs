@@ -1,6 +1,13 @@
 import isCacheValid from './isCacheValid';
 
 const defaultCacheValidity = 30;
+/**
+ * Receives an http client (axios interface)
+ * and creates a wrapper for the get method that will cache the request
+ * @module
+ * @param {Object} - an http client
+ * @return {Object} http client
+ */
 
 export default function (client) {
 	const cacheStorage = {};
