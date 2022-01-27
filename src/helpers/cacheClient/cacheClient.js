@@ -28,14 +28,13 @@ export default function (client) {
 				return new Promise((resolve) => {
 					resolve(cachedDataItem.response);
 				});
-			} else {
-				try {
-					const response = await client.get(url, params);
-					cacheStorage[url] = { response, date };
-					return new Promise((resolve) => resolve(response));
-				} catch (e) {
-					return new Promise((_, reject) => reject(e));
-				}
+			}
+			try {
+				const response = await client.get(url, params);
+				cacheStorage[url] = { response, date };
+				return new Promise((resolve) => resolve(response));
+			} catch (e) {
+				return new Promise((_, reject) => reject(e));
 			}
 		},
 	};
