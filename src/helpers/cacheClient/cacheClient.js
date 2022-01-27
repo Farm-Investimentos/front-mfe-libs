@@ -6,28 +6,29 @@ export default function (client) {
 	const cacheStorage = {};
 
 	return {
-		get: async (url, cacheValidity) => {
+		get: async (url, params) => {
 			const date = new Date();
 			const cachedDataItem = cacheStorage[url];
 
-			const isValid = isCacheValid(
-				cachedDataItem,
-				date,
-				cacheValidity || defaultCacheValidity,
-			);
+			const maxAge =
+				params && params.cache && params.cache.maxAge
+					? params.cache.maxAge
+					: defaultCacheValidity;
 
-			if (!isValid) {
+			const isValid = isCacheValid(cachedDataItem, date, maxAge);
+
+			if (isValid) {
+				return new Promise((resolve) => {
+					resolve(cachedDataItem.response);
+				});
+			} else {
 				try {
-					const response = await client.get(url);
+					const response = await client.get(url, params);
 					cacheStorage[url] = { response, date };
 					return new Promise((resolve) => resolve(response));
 				} catch (e) {
 					return new Promise((_, reject) => reject(e));
 				}
-			} else {
-				return new Promise((resolve) => {
-					resolve(cachedDataItem.response);
-				});
 			}
 		},
 	};
