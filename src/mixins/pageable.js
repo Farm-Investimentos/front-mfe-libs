@@ -32,6 +32,13 @@ const pageable = {
 			}
 		},
 	},
+	computed: {
+		currentPage: {
+			get() {
+				return this.filters.page + 1;
+			},
+		},
+	},
 };
 
 export default pageable;
