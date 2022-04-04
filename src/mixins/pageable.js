@@ -49,7 +49,7 @@ const pageable = {
 			const currentFilters = this.currentFiltersFromKey(key);
 			if (currentFilters) {
 				this.disableSearch();
-				let filters = {
+				const filters = {
 					...currentFilters.filters,
 					page: currentFilters.filters.page,
 				};
@@ -67,8 +67,8 @@ const pageable = {
 			if (this.$route.query && this.$route.query.page) {
 				this.filters = {
 					...this.$route.query,
-					page: parseInt(this.$route.query.page),
-					limit: parseInt(this.$route.query.limit),
+					page: parseInt(this.$route.query.page, 10),
+					limit: parseInt(this.$route.query.limit, 10),
 				};
 
 				return true;
@@ -88,11 +88,12 @@ const pageable = {
 				obj[key] = value.toString();
 			});
 
-			if (JSON.stringify(obj) !== JSON.stringify(this.$route.query))
+			if (JSON.stringify(obj) !== JSON.stringify(this.$route.query)) {
 				this.$router.replace({
 					path: this.$route.path,
 					query: { ...obj },
 				});
+			}
 		},
 	},
 	computed: {
