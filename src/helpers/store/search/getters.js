@@ -1,6 +1,6 @@
 export default {
-	
-	currentFiltersFromKey: state => key => {
+
+	currentFiltersFromKey: (state) => (key) => {
 		if (!state.currentFilters) {
 			return null;
 		}
