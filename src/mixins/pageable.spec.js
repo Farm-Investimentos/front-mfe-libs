@@ -17,4 +17,9 @@ describe('pageable', () => {
 		};
 		expect(pageable.computed.currentPage.get()).toEqual(1);
 	});
+
+	it('Should hable enable search methods', () => {
+		expect(pageable.methods.enableSearch).toBeDefined();
+		expect(pageable.methods.disableSearch).toBeDefined();
+	})
 });
