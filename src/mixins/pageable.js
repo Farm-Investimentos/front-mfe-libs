@@ -1,12 +1,17 @@
 const pageable = {
+	data() {
+		return {
+			canDoSearch: true,
+		};
+	},
 	methods: {
 		onChangeLimitPerPage(newLimit) {
 			this.filters.limit = newLimit;
-			this.redoSearchFirstPage();
+			if (this.canDoSearch) this.redoSearchFirstPage();
 		},
 		onChangePage(newPage) {
 			this.filters.page = newPage - 1;
-			this.doSearch();
+			if (this.canDoSearch) this.doSearch();
 		},
 		redoSearchFirstPage() {
 			if (this.filters.page !== 0) {
@@ -29,6 +34,65 @@ const pageable = {
 			this.filters[this.filterInputKey] = value;
 			if (value.length >= 3 || value === '') {
 				this.redoSearchFirstPage();
+			}
+		},
+		enableSearch() {
+			this.canDoSearch = true;
+		},
+		disableSearch() {
+			this.canDoSearch = false;
+		},
+		checkStateOnMount(key) {
+			if (!this.hasQueryParams()) {
+				return false;
+			}
+			const currentFilters = this.currentFiltersFromKey(key);
+			if (currentFilters) {
+				this.disableSearch();
+				const filters = {
+					...currentFilters.filters,
+					page: currentFilters.filters.page,
+				};
+				this.filters = { ...filters };
+				this.initFiltersValues = { ...filters };
+				this.filter = currentFilters.showFilters;
+				this.$nextTick(() => {
+					this.enableSearch();
+				});
+				return true;
+			}
+			return false;
+		},
+		checkUrlQueryOnMount() {
+			if (this.$route.query && this.$route.query.page) {
+				this.filters = {
+					...this.$route.query,
+					page: parseInt(this.$route.query.page, 10),
+					limit: parseInt(this.$route.query.limit, 10),
+				};
+
+				return true;
+			}
+			return false;
+		},
+		hasQueryParams() {
+			return Object.keys(this.$route.query).length > 0;
+		},
+		updateQueryInUrl() {
+			const obj = {};
+			Object.keys(this.filters).forEach((key) => {
+				const value = this.filters[key];
+				if (Array.isArray(value)) {
+					return (obj[key] = value.join(',').toString());
+				}
+				obj[key] = value.toString();
+			});
+
+			if (JSON.stringify(obj) !== JSON.stringify(this.$route.query)) {
+				this.$router.replace({
+					path: this.$route.path,
+					query: { ...obj },
+				});
 			}
 		},
 	},
