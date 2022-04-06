@@ -56,6 +56,7 @@ const pageable = {
 				this.filters = { ...filters };
 				this.initFiltersValues = { ...filters };
 				this.filter = currentFilters.showFilters;
+
 				this.$nextTick(() => {
 					this.enableSearch();
 				});
@@ -71,6 +72,11 @@ const pageable = {
 					limit: parseInt(this.$route.query.limit, 10),
 				};
 
+				if (this.hasSort) {
+					this.hasSort.orderby = this.$route.query.orderby;
+					this.hasSort.order = this.$route.query.order;
+				}
+
 				return true;
 			}
 			return false;
@@ -85,13 +91,17 @@ const pageable = {
 				if (Array.isArray(value)) {
 					return (obj[key] = value.join(',').toString());
 				}
-				obj[key] = value.toString();
+				if (value !== undefined) obj[key] = value.toString();
 			});
+			if (this.hasSort) {
+				obj.orderby = this.hasSort.orderby;
+				obj.order = this.hasSort.order;
+			}
 
 			if (JSON.stringify(obj) !== JSON.stringify(this.$route.query)) {
 				this.$router.replace({
 					path: this.$route.path,
-					query: { ...obj },
+					query: { path: this.$route.query.path, ...obj },
 				});
 			}
 		},
