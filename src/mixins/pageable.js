@@ -86,9 +86,8 @@ const pageable = {
 		},
 		updateQueryInUrl() {
 			const obj = {};
-			Object.keys(this.filters).forEach(key => {
+			Object.keys(this.filters).forEach((key) => {
 				const value = this.filters[key];
-				console.log(key, value);
 				if (Array.isArray(value)) {
 					return (obj[key] = value.join(',').toString());
 				}
