@@ -10,44 +10,43 @@
  * @return {Object} axios client ready for use
  */
 export default (httpClient, notification, baseURL) => {
-	const fullfilledRequest = config => {
+	const fullfilledRequest = (config) => {
 		notification('LOADING_START');
 		const token = localStorage.getItem('Token');
 		config.headers.authorization = `Bearer ${token}`;
 		return config;
 	};
 
-	const fullfilledResponse = response => {
+	const fullfilledResponse = (response) => {
 		notification('LOADING_END');
 		return response;
 	};
 
-	const errorResponse = err => {
+	const errorResponse = (err) => {
 		notification('LOADING_END');
-		const url = err.config ? err.config.baseURL + err.config.url : '';
-		const message = err && err.toJSON() ? err.toJSON().message : '';
-		const status = err.response ? err.response.status : '';
-		const method = err.config ? err.config.method : '';
-		const location = window.location.href;
-
-		notification('HTTP_ERROR', { url, message, status, method, location });
 
 		if (err.response && err.response.status === 401) {
 			notification('UNAUTHORIZED', { err });
 			throw err;
 		}
+		const url = err.config ? err.config.baseURL + err.config.url : '';
+		const message = err && err.toJSON() ? err.toJSON().message : '';
+		const status = err.response ? err.response.status : '';
+		const method = err.config ? err.config.method : '';
+		const location = window.location.href;
+		notification('HTTP_ERROR', { url, message, status, method, location });
 		throw err;
 	};
 
-	const buildInstance = _httpClient => {
+	const buildInstance = (_httpClient) => {
 		const instancia = _httpClient.create({
 			baseURL,
 			timeout: 20 * 1000,
 		});
 
 		instancia.interceptors.request.use(
-			c => fullfilledRequest(c),
-			err => Promise.reject(err)
+			(c) => fullfilledRequest(c),
+			(err) => Promise.reject(err),
 		);
 
 		instancia.interceptors.response.use(fullfilledResponse, errorResponse);
