@@ -24,10 +24,17 @@ export default (httpClient, notification, baseURL) => {
 
 	const errorResponse = (err) => {
 		notification('LOADING_END');
+
 		if (err.response && err.response.status === 401) {
 			notification('UNAUTHORIZED', { err });
 			throw err;
 		}
+		const url = err.config ? err.config.baseURL + err.config.url : '';
+		const message = err && err.toJSON() ? err.toJSON().message : '';
+		const status = err.response ? err.response.status : '';
+		const method = err.config ? err.config.method : '';
+		const location = window.location.href;
+		notification('HTTP_ERROR', { url, message, status, method, location });
 		throw err;
 	};
 
