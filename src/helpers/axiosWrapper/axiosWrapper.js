@@ -34,7 +34,9 @@ export default (httpClient, notification, baseURL) => {
 		const status = err.response ? err.response.status : '';
 		const method = err.config ? err.config.method : '';
 		const location = window.location.href;
-		notification('HTTP_ERROR', { url, message, status, method, location });
+		notification('HTTP_ERROR', {
+			url, message, status, method, location,
+		});
 		throw err;
 	};
 
